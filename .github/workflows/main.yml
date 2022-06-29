@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Setup
+        run: |
+          sudo apt install -y make python build-essential
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev rsync flex bison ccache expect aria2 unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev brotli liblz4-tool axel gawk aria2 detox cpio rename build-essential simg2img aria2 python3-pip tree
+          rm -rf /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+          sudo apt-get purge --purge openjdk* -y
+          git config --global user.name "${{ secrets.GH_NAME }}"
+          git config --global user.email "${{ secrets.GH_MAIL }}"
+          git config --global credential.helper store
+          echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
+      - name: Cloning
+        run: |
+          git clone https://github.com/botgram/shell-bot.git && cd shell-bot
+          npm install
+          
+      - name: Starting bot
+        timeout-minutes: 340
+        run: |
+          mv config.json shell-bot
+          cd shell-bot
+          node server
+          
+      - name: Re-run workflow
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+              git clone https://${{ secrets.GH_TOKEN }}@github.com/ping2109/sGSI-TGbot loop ; cd loop
+              git commit --allow-empty -m "[LOOP] Re-run"
+              git push -f
+          
