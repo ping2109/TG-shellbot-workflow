@@ -30,6 +30,11 @@ jobs:
           git config --global credential.helper store
           echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
+      - name: Setup SSH
+        uses: fastai/workflows/ssh@master
+        with:
+          key_file: id_ecdsa
+          
       - name: Cloning
         run: |
           git clone https://github.com/botgram/shell-bot.git && cd shell-bot
