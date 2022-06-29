@@ -35,6 +35,11 @@ jobs:
           git clone https://github.com/botgram/shell-bot.git && cd shell-bot
           npm install
           
+      - name: Executing extra custom commands
+        run: |
+          echo 'GH_MAIL=${{ secrets.GH_MAIL }}' >> config.env
+          echo'GH_TOKEN=${{ secrets.GH_TOKEN }}' >> config.env
+          
       - name: Starting bot
         timeout-minutes: 340
         run: |
