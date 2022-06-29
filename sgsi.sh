@@ -37,5 +37,4 @@ sudo bash 12/setup.sh
 sudo apt-get -y --purge remove "adoptopenjdk-11-hotspot"
 sudo pip3 install 'protobuf~=3.19.0'
 
-echo "NAME=ping2109" >> config.env
-echo "PASS=${{ secrets.SF_PASS }}" >> config.env
+
