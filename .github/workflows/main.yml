@@ -38,6 +38,7 @@ jobs:
       - name: Starting bot
         timeout-minutes: 340
         run: |
+          mv * ~ && cd ~
           mv config.json shell-bot
           cd shell-bot
           node server
