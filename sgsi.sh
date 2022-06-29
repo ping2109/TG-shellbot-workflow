@@ -2,6 +2,10 @@
 
 # Copyright (C) 2022 ping2109
 
+git config --global user.name "${{ secrets.GH_NAME }}"
+git config --global user.email "${{ secrets.GH_MAIL }}"
+git config --global credential.helper store
+echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
 mkdir neva
 cd neva
