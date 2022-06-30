@@ -42,21 +42,20 @@ jobs:
           
       - name: Cloning
         run: |
-          git clone https://github.com/botgram/shell-bot.git && cd shell-bot
+          git clone https://github.com/ping2109/shell-bot.git && cd shell-bot
           npm install
           
       - name: Executing extra custom commands
         run: |
           echo 'GH_MAIL=${{ secrets.GH_MAIL }}' >> config.env
           echo 'GH_TOKEN=${{ secrets.GH_TOKEN }}' >> config.env
-          echo "NAME=ping2109" >> config.env
-          echo "PASS=${{ secrets.SF_PASS }}" >> config.env
+          echo 'NAME=ping2109' >> config.env
+          echo 'PASS=${{ secrets.SF_PASS }}' >> config.env
           
       - name: Starting bot
         timeout-minutes: 340
         run: |
           mv * ~ && cd ~
-          mv config.json shell-bot
           cd shell-bot
           node server
           
