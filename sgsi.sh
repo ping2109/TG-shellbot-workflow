@@ -32,6 +32,8 @@ git clone --recurse-submodules $REPO -b 12-slim 12s
 echo "en_US" > 12s/.lang_flag
 git clone --recurse-submodules $REPO -b 12-lite 12l
 echo "en_US" > 12l/.lang_flag
+git clone --recurse-submodules $REPO -b 13 13
+echo "en_US" > 13/.lang_flag
 sudo chmod -R 0777 ./
 sudo bash 12/setup.sh
 sudo apt-get -y --purge remove "adoptopenjdk-11-hotspot"
