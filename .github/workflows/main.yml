@@ -51,7 +51,7 @@ jobs:
           echo 'GH_TOKEN=${{ secrets.GH_TOKEN }}' >> config.env
           echo 'NAME=ping2109' >> config.env
           echo 'PASS=${{ secrets.SF_PASS }}' >> config.env
-          # sudo bash sgsi.sh
+          sudo bash sgsi.sh
           
       - name: Starting bot
         timeout-minutes: 340
