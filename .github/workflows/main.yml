@@ -64,7 +64,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         run: |
-              git clone https://${{ secrets.GH_TOKEN }}@github.com/ping2109/sGSI-TGbot loop ; cd loop
+              git clone https://${{ secrets.GH_TOKEN }}@github.com/ping2109/TG-shellbot-workflowloop ; cd loop
               git commit --allow-empty -m "[LOOP] Re-run"
               git push -f
           
