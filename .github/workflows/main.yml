@@ -21,7 +21,7 @@ jobs:
         name: "Cancel duplicate workflow runs"
         with:
             all_but_latest: true
-            access_token: ${{ github.token }}
+            access_token: ${{ secrets.GH_TOKEN }}
       # Runs a set of commands using the runners shell
       - name: Setup
         run: |
@@ -51,6 +51,7 @@ jobs:
           echo 'GH_TOKEN=${{ secrets.GH_TOKEN }}' >> config.env
           echo 'NAME=ping2109' >> config.env
           echo 'PASS=${{ secrets.SF_PASS }}' >> config.env
+          # sudo bash sgsi.sh
           
       - name: Starting bot
         timeout-minutes: 340
@@ -63,7 +64,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         run: |
-              git clone https://${{ secrets.GH_TOKEN }}@github.com/ping2109/TG-shellbot-workflowloop ; cd loop
+              git clone https://${{ secrets.GH_TOKEN }}@github.com/ping2109/TG-shellbot-workflow loop ; cd loop
               git commit --allow-empty -m "[LOOP] Re-run"
               git push -f
           
