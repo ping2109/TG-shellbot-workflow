@@ -11,9 +11,6 @@ git config --global user.email "$GH_MAIL"
 git config --global credential.helper store
 echo "https://$GH_NAME:$GH_TOKEN@github.com" > ~/.git-credentials
 
-mkdir neva
-cd neva
-
 sudo -E apt-get -qq update
 sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev rsync flex bison ccache expect aria2 unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev brotli liblz4-tool axel gawk aria2 detox cpio rename build-essential simg2img aria2 python3-pip tree
 rm -rf /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
@@ -22,8 +19,8 @@ sudo apt-get purge --purge openjdk* -y
 
 REPO="https://github.com/TheRealAnh/sGSI"
 
-git clone --recurse-submodules $REPO -b tool SGSIs
-sudo chmod -R 0777 SGSIs ; cd SGSIs
+git clone --recurse-submodules $REPO -b tool neva
+sudo chmod -R 0777 neva ; cd neva
 git clone --recurse-submodules $REPO -b 11 11
 echo "en_US" > 11/.lang_flag
 git clone --recurse-submodules $REPO -b 12 12
