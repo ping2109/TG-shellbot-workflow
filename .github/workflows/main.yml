@@ -54,7 +54,8 @@ jobs:
           sudo bash sgsi.sh
           
       - name: Starting bot
-        timeout-minutes: 330
+        continue-on-error: true
+        timeout-minutes: 350
         run: |
           sudo mv * ~ && cd ~
           cd shell-bot
