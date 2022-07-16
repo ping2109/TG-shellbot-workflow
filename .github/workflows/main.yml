@@ -55,7 +55,7 @@ jobs:
           
       - name: Starting bot
         continue-on-error: true
-        timeout-minutes: 350
+        timeout-minutes: 330
         run: |
           sudo mv * ~ && cd ~
           cd shell-bot
