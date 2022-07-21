@@ -25,10 +25,6 @@ git clone --recurse-submodules $REPO -b 11 11
 echo "en_US" > 11/.lang_flag
 git clone --recurse-submodules $REPO -b 12 12
 echo "en_US" > 12/.lang_flag
-git clone --recurse-submodules $REPO -b 12-slim 12s
-echo "en_US" > 12s/.lang_flag
-git clone --recurse-submodules $REPO -b 12-lite 12l
-echo "en_US" > 12l/.lang_flag
 git clone --recurse-submodules $REPO -b 13 13
 echo "en_US" > 13/.lang_flag
 sudo chmod -R 0777 ./
